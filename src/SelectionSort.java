@@ -12,13 +12,13 @@ public class SelectionSort {
     private static void  sort(int arr[]){
         int indice=0;
         for(int i=0;i<arr.length-1;i++){
-//            indice = i;
-//            for(int j=i+1;j<arr.length;j++){
-//                if(arr[j]<arr[indice]){
-//                    indice=j;
-//                }
-//            }
-            indice=findSmallestElement(arr);
+            indice = i;
+            for(int j=i+1;j<arr.length;j++){
+                if(arr[j]<arr[indice]){
+                    indice=j;
+                }
+            }
+      //      indice=findSmallestElement(arr);
             swap(arr,i,indice);
         }
     }

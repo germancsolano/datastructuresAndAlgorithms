@@ -7,7 +7,7 @@ import java.util.Arrays;
  * At sort method we will
  */
 public class BubbleSort {
-static int arr[]={12,3,44,7,1,22,2};
+static int arr[]={12,3,44,7,1,22,2,0};
     public static void main(String args[]){
         System.out.println("Bubble sort algorithm");
         sort(arr);
