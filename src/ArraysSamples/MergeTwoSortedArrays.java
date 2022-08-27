@@ -1,6 +1,12 @@
-package Arrays;
+package ArraysSamples;
+
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 
 public class MergeTwoSortedArrays {
+
+
     static int arr1[]= {1,3,4,5};
     static int arr2[]= {2,6,7,8};
     public static void main(String args[]){
