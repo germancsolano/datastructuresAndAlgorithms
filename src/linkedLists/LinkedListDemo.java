@@ -18,15 +18,18 @@ public class LinkedListDemo {
         Employee employee = new Employee("German", "Carranza");
         Employee employee1 = new Employee("Perla", "Carranza");
         Employee employee2 = new Employee("Poncho", "Carranza");
+        Employee employee3 = new Employee("Andrea", "Rios");
         list.insertAtHead(employee);
         list.insertAtHead(employee1);
         list.insertAtHead(employee2);
         System.out.println(list);
         System.out.println(list.getLenght());
-        list.deleteAtHead();
+       // list.deleteAtHead();
+        list.deleteNode(employee2);
         System.out.println(list);
         System.out.println(list.getLenght());
         System.out.println(list.findElement(employee1));
+        list.insertAtLast(employee3);
     }
     static class Employee {
         private String Name;

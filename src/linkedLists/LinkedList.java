@@ -9,6 +9,20 @@ public class LinkedList<T> {
         newNode.setNextNode(this.head);
         this.head=newNode;
     }
+    public void insertAtLast(T data){
+        Node newNode =new Node<>(data);
+        newNode.setNextNode(null);
+
+        if(head ==null){
+            head=newNode;
+        }else{
+            Node temp = head;
+            while(temp.getNextNode() != null){
+                temp=temp.getNextNode();
+            }
+            temp.setNextNode(newNode);
+        }
+    }
 
     public int getLenght(){
         Node current = this.head;
@@ -32,6 +46,23 @@ public class LinkedList<T> {
             current=current.getNextNode();
         }
         return null;
+    }
+
+    public void deleteNode(T k ){
+        if(head.getData().equals(k)){
+            head=head.getNextNode();
+        }else{
+            Node temp = head;
+            while(temp.getNextNode() != null){
+                if(temp.getNextNode().getData().equals(k)){
+                    temp.getNextNode().setNextNode( temp.getNextNode().getNextNode());
+                    break;
+                }else{
+                    temp=temp.getNextNode();
+                }
+            }
+        }
+
     }
 
     @Override
