@@ -3,6 +3,7 @@ package linkedLists;
 public class Node<T> {
     private T data;
     private Node nextNode;
+    private Node prevNode;
 
     public Node (T data){
         this.data=data;
@@ -22,6 +23,14 @@ public class Node<T> {
 
     public void setNextNode(Node nextNode) {
         this.nextNode = nextNode;
+    }
+
+    public Node getPrevNode() {
+        return prevNode;
+    }
+
+    public void setPrevNode(Node prevNode) {
+        this.prevNode = prevNode;
     }
 
     @Override
