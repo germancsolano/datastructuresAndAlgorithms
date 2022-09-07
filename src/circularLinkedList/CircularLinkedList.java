@@ -73,7 +73,6 @@ public class CircularLinkedList<T> {
 
         }
 
-
     }
     public void print(){
         if (head==null){
