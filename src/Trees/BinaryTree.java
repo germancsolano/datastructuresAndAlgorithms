@@ -14,9 +14,15 @@ public class BinaryTree {
         System.out.println("Inserting Element: "+125);
         bst.root = bst.insert(bst.root,125);
         System.out.println("Searching Element: "+50);
-        System.out.println(bst.find(bst.root,50));
+        System.out.println(bst.find(bst.root,500));
 
         System.out.println("Inorder Traversal of Above BST");
+        bst.inorder(bst.root);
+        int key = 100;
+        System.out.println("Deleting Element: "+key);
+        bst.root = bst.Delete(bst.root,key);
+
+        System.out.println("After Deletion: Inorder Traversal of BST");
         bst.inorder(bst.root);
     }
     public static Node insert(Node root, int val){
@@ -38,20 +44,50 @@ public class BinaryTree {
         inorder(root.right);
     }
 
-    public static Node find(Node root, int val){
+    public static boolean find(Node root, int val){
         if(root == null)
-            return null;
-        if(root.data==val) {
-            return root;
-        }
-        else if(root.data < val){
-            root.right=find(root.right,val);
-        }else if (root.data > val){
-            root.left=find(root.left,val);
-        }
-        return root;
+            return false;
+        if(root.data==val)
+            return true;
+
+        if(root.data < val)
+           return find(root.right,val);
+        else
+           return find(root.left,val);
+
 
     }
+     public static Node Delete(Node root, int val){
+        if(root == null)
+            return null;
+        // now we have to find the element to delete
+         if(root.data < val)
+             root.right=Delete(root.right,val);
+         else if(root.data > val)
+             root.left= Delete(root.left,val);
+         else{
+             //Case when node is a leaf
+             if (root.left == null && root.right == null)
+                 return null;
+             else if (root.left == null)
+                 return root.right;
+             else if (root.right == null)
+                 return root.left;
+             else {// this is the case where we have a node root node with ledf and right children
+                 int key = getRightMin(root.right);
+                 root.data = key;
+                 root.right = Delete(root.right, key);
+             }
+         }
+         return root;
+     }
+     public static int getRightMin(Node root){
+        Node temp = root;
+        while (temp.left != null){
+            temp= temp.left;
+        }
+        return temp.data;
+     }
 }
 class Node {
     int data;
