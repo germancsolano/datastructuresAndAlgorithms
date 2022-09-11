@@ -72,26 +72,36 @@ package BinaryHeap;
  *     2.2- right = left + 1
  *     2.3 - assign index to a max variable
  *     3.- Once in the most sub tree index check wheather node is greated than both of children
- *     3.1- if left is smaller than size of the array and element in array of index left  is greather than element in array of max
+ *     3.1- if left is smaller or equal  than size of the array and element in array of index left  is greather than element in array of max
  *     3.1.1- assign left to max
- *     3.2- if right is smaller then array size and array in index right is greather than array of index max
+ *     3.2- if right is smaller or equal  than array size and array in index right is greather than array of index max
  *     3.2.1- assign right to max
  *     4.- Check if max value is different from index which mean there was an element bigger found at children nodes
  *     4.1.- Swap node at index with the node with max node
  *     5.- Call the Heapify function for the swapped node like Heapify(array, max,size)
  *
+ *    Delete the max element from maxheap
+ *    1.- Build the max heap
+ *    2.- swap elements at index 0 and array size
+ *    3.- reduce the size of the array by 1.
+ *    4.- call heapify at index 0
  *
  */
 public class MaxHeap {
+    int arr[] = {10, 20, 40, 30, 80, 60, 50};
     public static void main(String[] args) {
         MaxHeap obj = new MaxHeap();
-        int arr[] = {10, 20, 40, 30, 80, 60, 50};
+
         System.out.println("The Array Elements Are:");
-        obj.print(arr,arr.length);
+        obj.print(obj.arr,obj.arr.length);
         System.out.println("Constructing Heap...");
-        obj.buildHeap(arr, arr.length - 1);
+        obj.buildHeap(obj.arr, obj.arr.length - 1);
         System.out.println("The Array Elements Are:");
-        obj.print(arr,arr.length);
+        obj.print(obj.arr,obj.arr.length);
+        obj.deleteMax(obj.arr.length - 1);
+        obj.print(obj.arr,obj.arr.length - 1);
+        obj.deleteMax(obj.arr.length - 2);
+        obj.print(obj.arr,obj.arr.length - 2);
 
     }
     public void buildHeap(int arr[], int size){
@@ -112,17 +122,31 @@ public class MaxHeap {
         if(right < size && arr[right] > arr[max])
             max= right;
         if(max != index){
-            int temp = arr[max];
-            arr[max]= arr[index];
-            arr[index] = temp;
+          swap(arr,max,index);
             heapify(arr,max,size);
         }
+    }
+    public void deleteMax(int size){
+        // swap first and last elements
+         size = size;
+        swap(arr,0,size );
+        System.out.println("max element is " + arr[size]);
+        size= size-1;
+        heapify(arr,0,size);
+
+
     }
     public void print(int arr[], int size)
     {
         for(int i = 0; i < size; i++)
             System.out.print(arr[i]+" ");
         System.out.println();
+    }
+
+    public void swap(int arr[], int a, int b){
+        int temp = arr[a];
+        arr[a]= arr[b];
+        arr[b] = temp;
     }
 
 }
